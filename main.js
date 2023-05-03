@@ -4,12 +4,8 @@ let data;
 
 try {
     data = fs.readFileSync('./data/test.csv', 'utf8');
-    // console.log(data);
     const json = parseCsvToJSON(data);
-    //console.log(json);
     writeJsonToFile(json)
-    // writeJSONToCSV(json)
-
 } catch (error) {
     console.error(error)
 }
