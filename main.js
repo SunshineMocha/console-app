@@ -2,10 +2,14 @@ const fs = require('fs');
 
 let data;
 
+console.log(process.argv) // argv argomenti a linea di comando
+const inputUrl = process.argv[2];
+const outputUrl = process.argv[3];
+
 try {
-    data = fs.readFileSync('./data/test.csv', 'utf8');
+    data = fs.readFileSync(inputUrl, 'utf8');
     const json = parseCsvToJSON(data);
-    writeJsonToFile(json)
+    writeJsonToFile(json, outputUrl)
 } catch (error) {
     console.error(error)
 }
@@ -28,10 +32,10 @@ function parseCsvToJSON(data){
     console.log(objArray)
     return JSON.stringify(objArray)
 }
-function writeJsonToFile(json){
-    const content = 'sti cazzi'
+function writeJsonToFile(json, outputUrl){
+    // const content = 'sti cazzi'
     try {
-        fs.writeFileSync('./output/output.json', json)
+        fs.writeFileSync(outputUrl, json)
     } catch (error) {
         console.error(error);
     }
